@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import GameInput from './GameInput'
-import GameList from './GameList'
+import Games from './Games'
 
 class GameContainer extends Component {
 
@@ -9,7 +9,7 @@ class GameContainer extends Component {
     return(
       <div>
         <GameInput addGame={this.props.addGame}/>
-        <GameList games={this.props.games}/>
+        <Games games={this.props.games}/>
       </div>
     )
   }
