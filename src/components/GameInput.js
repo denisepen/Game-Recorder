@@ -4,12 +4,23 @@ export default class GameInput extends Component {
   constructor(){
     super();
 
+
+
     this.state={
       mode: '',
       max_kills: '',
       comments: ''
     }
   }
+
+  handleSubmit = event => {
+  event.preventDefault();
+  this.props.addGame(this.state)
+  console.log("state:", this.state)
+  this.setState({
+  name: '',
+})
+}
 
 handleModeChange = (e) => {
   this.setState({
@@ -33,7 +44,7 @@ handleCommentsChange = (e) => {
     return(
       <div>
         <h2> Please add your game </h2>
-        <form>
+        <form onSubmit={(event) => this.handleSubmit(event)}>
           Mode: <input type="text" onChange={(e) => this.handleModeChange(e)} value={this.state.mode}/> {this.state.mode}<br/>
           Max Kills: <input type="number" onChange={(e) => this.handleKillsChange(e)}/>{this.state.max_kills}<br/>
           Comments: <input type="text" onChange={(e) => this.handleCommentsChange(e)}/>{this.state.comments}<br/>

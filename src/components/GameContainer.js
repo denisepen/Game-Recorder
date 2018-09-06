@@ -1,15 +1,22 @@
 import React, { Component} from 'react';
+import { connect } from 'react-redux';
 import GameInput from './GameInput'
 import GameList from './GameList'
 
-export default class GameContainer extends Component {
+class GameContainer extends Component {
 
   render (){
     return(
       <div>
-        <GameInput />
-        <GameList />
+        <GameInput addGame={this.props.addGame}/>
+        <GameList games={this.props.games}/>
       </div>
     )
   }
 }
+
+const mapStateToProps = ({ games }) => ({ games })
+
+const mapDispatchToProps = dispatch => ({ addGame: game => dispatch({ type: "ADD_GAME", game }) })
+
+export default connect (mapStateToProps, mapDispatchToProps)(GameContainer)
