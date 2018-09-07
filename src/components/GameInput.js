@@ -7,9 +7,12 @@ export default class GameInput extends Component {
 
 
     this.state={
+      date: '',
       mode: '',
       max_kills: '',
-      comments: ''
+      final_place: '',
+      comments: '',
+      victory: 'Next Time'
     }
   }
 
@@ -18,10 +21,19 @@ export default class GameInput extends Component {
   this.props.addGame(this.state)
   console.log("state:", this.state)
   this.setState({
+    
     mode: '',
     max_kills: '',
-    comments: ''
-})
+    final_place: '',
+    comments: '',
+
+  })
+}
+
+handleDateChange = (e) => {
+  this.setState({
+    date: e.target.value
+  })
 }
 
 handleModeChange = (e) => {
@@ -36,10 +48,23 @@ handleKillsChange = (e) => {
   })
 }
 
+
+handlePlaceChange = (e) => {
+  this.setState({
+    final_place: e.target.value
+  })
+}
+
 handleCommentsChange = (e) => {
   this.setState({
     comments: e.target.value
   })
+}
+
+handleWinnerChange = (e) => {
+  this.setState(
+       {victory: e.target.value}
+  )
 }
 
   render(){
@@ -47,6 +72,7 @@ handleCommentsChange = (e) => {
       <div>
         <h2> Please add your game </h2>
         <form onSubmit={(event) => this.handleSubmit(event)}>
+        Date: <input type="date" onChange={(e) => this.handleDateChange(e)}/>{this.state.date}<br/>
 
           <h3>Game Mode</h3>
             <label>
@@ -94,9 +120,22 @@ handleCommentsChange = (e) => {
               /> <br/>
             </label>
 
+
           Max Kills: <input type="number" onChange={(e) => this.handleKillsChange(e)}/>{this.state.max_kills}<br/>
+          Final Place:<input type="number" onChange={(e) => this.handlePlaceChange(e)}/>{this.state.final_place}<br/>
           Comments: <input type="text" onChange={(e) => this.handleCommentsChange(e)}/>{this.state.comments}<br/>
-          <input type="submit" value="submit" />
+
+          <label>
+          1st Place?
+            <input type="checkbox"
+            onChange={(e) => this.handleWinnerChange(e)}
+            value={ "Winner"}
+            checked={this.state.victory === "Winner" }
+
+
+            /> <br/>
+          </label>
+          <input type="submit" value="Submit" />
         </form><br/>
       </div>
     )
@@ -105,3 +144,5 @@ handleCommentsChange = (e) => {
 
 // Mode: <input type="text" onChange={(e) => this.handleModeChange(e)} value={this.state.mode}/> {this.state.mode}<br/>
   // value={this.state.mode}
+
+  // checked={this.state.winner === "Winner"}
