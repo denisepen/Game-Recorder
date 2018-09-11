@@ -20,3 +20,11 @@ const mapStateToProps = ({ games }) => ({ games })
 const mapDispatchToProps = dispatch => ({ addGame: game => dispatch({ type: "ADD_GAME", game }) })
 
 export default connect (mapStateToProps, mapDispatchToProps)(GameContainer)
+
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     addGame: function(game) {
+//       return dispatch({ type: "ADD_GAME", game });
+//     }
+//   };
+// }

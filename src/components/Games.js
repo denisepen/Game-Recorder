@@ -4,14 +4,16 @@ const Games = props => {
 
   const games = props.games.map((game, index) =>
 
-      <tr key={index}>
-        <td> {game.date} </td>
-        <td> {game.mode} </td>
-        <td> {game.max_kills} </td>
-        <td> {game.final_place} </td>
-        <td> {game.victory} </td>
-        <td> {game.comments}</td>
-      </tr>
+  <Game key={index} date={game.date} mode={game.mode} max_kills={game.max_kills} final_place={game.final_place} victory={game.victory} comments={game.comments} />
+
+      // <tr key={index}>
+      //   <td> {game.date} </td>
+      //   <td> {game.mode} </td>
+      //   <td> {game.max_kills} </td>
+      //   <td> {game.final_place} </td>
+      //   <td> {game.victory} </td>
+      //   <td> {game.comments}</td>
+      // </tr>
   );
 
   return (
@@ -28,8 +30,8 @@ const Games = props => {
           </tr>
         </thead>
         <tbody>
-
-          {games}
+          <Game />
+          {/*games */}
         </tbody>
       </table>
 
