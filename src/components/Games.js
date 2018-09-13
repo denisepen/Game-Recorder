@@ -1,4 +1,5 @@
 import React from 'react';
+import Game from './game'
 
 const Games = props => {
 
@@ -30,8 +31,8 @@ const Games = props => {
           </tr>
         </thead>
         <tbody>
-          <Game />
-          {/*games */}
+
+          {games }
         </tbody>
       </table>
 

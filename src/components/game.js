@@ -1,15 +1,15 @@
 import React from 'react'
 
 
-export default Game = (props) => {
-  <tr >
+export default  (props) => {
+  return (<tr >
     <td> {props.date} </td>
     <td> {props.mode} </td>
     <td> {props.max_kills} </td>
     <td> {props.final_place} </td>
     <td> {props.victory} </td>
     <td> {props.comments}</td>
-  </tr>
+  </tr>)
 }
 // <Game date={game.date} mode={game.mode} max_kills={game.max_kills} final_place={game.final_place} victory={game.victory} comments={game.comments} />
 
